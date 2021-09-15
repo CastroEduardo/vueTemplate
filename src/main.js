@@ -12,7 +12,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueJsonp from 'vue-jsonp'
 // import VueSocketIOExt from 'vue-socket.io-extended'
-import io from 'socket.io-client'
+//import io from 'socket.io-client'
 
 //VueJsonp
 Vue.use(VueJsonp)

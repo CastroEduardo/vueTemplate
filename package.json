@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@chenfengyuan/vue-countdown": "^1.1.2",
+     "@chenfengyuan/vue-countdown": "^1.1.2",
     "adapterjs": "^0.15.5",
     "ag-grid-community": "^21.0.1",
     "ag-grid-vue": "^21.0.1",
@@ -72,7 +72,7 @@
     "xlsx": "^0.15.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^1.2.0",
+   "@fullhuman/postcss-purgecss": "^1.2.0",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
