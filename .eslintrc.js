@@ -12,6 +12,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
+
     // Best Practices
     'eqeqeq': 'error',
     'no-invalid-this': 'error',
@@ -52,6 +53,7 @@ module.exports = {
     'semi-spacing': 'error',
     'space-before-blocks': 'error',
     'space-before-function-paren': 'error',
+
     'space-in-parens': 'error',
     'space-infix-ops': 'error',
     'space-unary-ops': 'error',

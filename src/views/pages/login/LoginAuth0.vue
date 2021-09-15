@@ -11,7 +11,6 @@ export default {
 
         // Close animation if passed as payload
         // this.$vs.loading.close()
-
         this.$vs.notify({
           title: 'Login Attempt',
           text: 'You are already logged in!',
