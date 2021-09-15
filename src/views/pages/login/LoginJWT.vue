@@ -58,7 +58,7 @@ export default {
   methods: {
     checkLogin () {
       // Loading
-      this.$vs.loading()
+      // this.$vs.loading()
       // this.$vs.notify({
       //   title: 'Login Attempt',
       //   text: 'You are already logged in!',
@@ -67,30 +67,35 @@ export default {
       //   color: 'warning'
       // })
       // If user is already logged in notify
-      if (this.$store.state.auth.isUserLoggedIn()) {
-        // Close animation if passed as payload
-        // this.$vs.loading.close()
-
-        return false
-      }
-      return true
+      // if (this.$store.state.auth.isUserLoggedIn()) {
+      //   // Close animation if passed as payload
+      //   // this.$vs.loading.close()
+      //   return false
+      // }
+      return false
     },
     loginJWT () {
-      if (!this.checkLogin()) return
+      // if (!this.checkLogin()) return
 
-      // Loading
+      // // Loading
       this.$vs.loading()
 
-      const payload = {
-        checkbox_remember_me: this.checkbox_remember_me,
-        userDetails: {
-          email: this.email,
-          password: this.password
-        }
-      }
+      // const payload = {
+      //   checkbox_remember_me: this.checkbox_remember_me,
+      //   userDetails: {
+      //     email: this.email,
+      //     password: this.password
+      //   }
+      // }
+
+      // console.log(payload)
+
+      // setTimeout(() => {
+      //   this.$vs.loading.close()
+      // }, 1000)
 
       this.$store
-        .dispatch('auth/loginJWT', payload)
+        .dispatch('auth/updateTest', 1)
         .then(() => {
           this.$vs.loading.close()
         })
@@ -104,6 +109,22 @@ export default {
             color: 'danger'
           })
         })
+
+      // this.$store
+      //   .dispatch('auth/loginJWT', payload)
+      //   .then(() => {
+      //     ç
+      //   })
+      //   .catch(error => {
+      //     this.$vs.loading.close()
+      //     this.$vs.notify({
+      //       title: 'Error',
+      //       text: error.message,
+      //       iconPack: 'feather',
+      //       icon: 'icon-alert-circle',
+      //       color: 'danger'
+      //     })
+      //   })
     },
     registerUser () {
       if (!this.checkLogin()) return

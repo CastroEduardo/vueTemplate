@@ -16,7 +16,7 @@
 
 <script>
 import themeConfig from '@/../themeConfig.js'
-import jwt         from '@/http/requests/auth/jwt/index.js'
+import jwt from '@/http/requests/auth/jwt/index.js'
 
 export default {
   data () {
@@ -41,7 +41,7 @@ export default {
         if (document.body.className.match('theme-dark')) document.body.classList.remove('theme-dark')
         document.body.classList.add('theme-semi-dark')
       } else {
-        if (document.body.className.match('theme-dark'))      document.body.classList.remove('theme-dark')
+        if (document.body.className.match('theme-dark')) document.body.classList.remove('theme-dark')
         if (document.body.className.match('theme-semi-dark')) document.body.classList.remove('theme-semi-dark')
       }
     },
@@ -52,7 +52,10 @@ export default {
       this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth)
 
       // Set --vh property
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight * 0.01}px`
+      )
     },
     handleScroll () {
       this.$store.commit('UPDATE_WINDOW_SCROLL_Y', window.scrollY)
@@ -67,7 +70,6 @@ export default {
     document.documentElement.style.setProperty('--vh', `${vh}px`)
   },
   async created () {
-
     // jwt
     jwt.init()
 
@@ -78,13 +80,15 @@ export default {
     window.addEventListener('scroll', this.handleScroll)
 
     // Auth0
-    try       { await this.$auth.renewTokens() } catch (e) { console.error(e) }
-
+    try {
+      await this.$auth.renewTokens()
+    } catch (e) {
+      console.error(e)
+    }
   },
   destroyed () {
     window.removeEventListener('resize', this.handleWindowResize)
     window.removeEventListener('scroll', this.handleScroll)
   }
 }
-
 </script>

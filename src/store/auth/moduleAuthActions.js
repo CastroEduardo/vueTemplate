@@ -30,12 +30,12 @@ export default {
       // Change firebase Persistence
       firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
-      // If success try to login
+        // If success try to login
         .then(function () {
           dispatch('login', newPayload)
         })
 
-      // If error notify
+        // If error notify
         .catch(function (err) {
 
           // Close animation if passed as payload
@@ -55,6 +55,7 @@ export default {
       dispatch('login', newPayload)
     }
   },
+
   login ({ commit, state, dispatch }, payload) {
 
     // If user is already logged in notify and exit
@@ -104,7 +105,7 @@ export default {
         // set new user data in localstorage
         if (!isUsernameUpdateRequired) {
           router.push(router.currentRoute.query.to || '/')
-          commit('UPDATE_USER_INFO', result.user.providerData[0], {root: true})
+          commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true })
         }
       }, (err) => {
 
@@ -123,7 +124,7 @@ export default {
   },
 
   // Google Login
-  loginWithGoogle ({commit, state}, payload) {
+  loginWithGoogle ({ commit, state }, payload) {
     if (state.isUserLoggedIn()) {
       payload.notify({
         title: 'Login Attempt',
@@ -139,7 +140,7 @@ export default {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         router.push(router.currentRoute.query.to || '/')
-        commit('UPDATE_USER_INFO', result.user.providerData[0], {root: true})
+        commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true })
       }).catch((err) => {
         payload.notify({
           time: 2500,
@@ -153,7 +154,7 @@ export default {
   },
 
   // Facebook Login
-  loginWithFacebook ({commit, state}, payload) {
+  loginWithFacebook ({ commit, state }, payload) {
     if (state.isUserLoggedIn()) {
       payload.notify({
         title: 'Login Attempt',
@@ -169,7 +170,7 @@ export default {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         router.push(router.currentRoute.query.to || '/')
-        commit('UPDATE_USER_INFO', result.user.providerData[0], {root: true})
+        commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true })
       }).catch((err) => {
         payload.notify({
           time: 2500,
@@ -183,7 +184,7 @@ export default {
   },
 
   // Twitter Login
-  loginWithTwitter ({commit, state}, payload) {
+  loginWithTwitter ({ commit, state }, payload) {
     if (state.isUserLoggedIn()) {
       payload.notify({
         title: 'Login Attempt',
@@ -199,7 +200,7 @@ export default {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         router.push(router.currentRoute.query.to || '/')
-        commit('UPDATE_USER_INFO', result.user.providerData[0], {root: true})
+        commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true })
       }).catch((err) => {
         payload.notify({
           time: 2500,
@@ -213,7 +214,7 @@ export default {
   },
 
   // Github Login
-  loginWithGithub ({commit, state}, payload) {
+  loginWithGithub ({ commit, state }, payload) {
     if (state.isUserLoggedIn()) {
       payload.notify({
         title: 'Login Attempt',
@@ -229,7 +230,7 @@ export default {
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
         router.push(router.currentRoute.query.to || '/')
-        commit('UPDATE_USER_INFO', result.user.providerData[0], {root: true})
+        commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true })
       }).catch((err) => {
         payload.notify({
           time: 2500,
@@ -241,7 +242,7 @@ export default {
         })
       })
   },
-  registerUser ({dispatch}, payload) {
+  registerUser ({ dispatch }, payload) {
 
     // create user using firebase
     firebase.auth().createUserWithEmailAndPassword(payload.userDetails.email, payload.userDetails.password)
@@ -279,7 +280,7 @@ export default {
       // update in localstorage
       const newUserData = Object.assign({}, payload.user.providerData[0])
       newUserData.displayName = payload.displayName
-      commit('UPDATE_USER_INFO', newUserData, {root: true})
+      commit('UPDATE_USER_INFO', newUserData, { root: true })
 
       // If reload is required to get fresh data after update
       // Reload current page
@@ -315,14 +316,14 @@ export default {
             localStorage.setItem('accessToken', response.data.accessToken)
 
             // Update user details
-            commit('UPDATE_USER_INFO', response.data.userData, {root: true})
+            commit('UPDATE_USER_INFO', response.data.userData, { root: true })
 
             // Set bearer token in axios
             commit('SET_BEARER', response.data.accessToken)
 
             resolve(response)
           } else {
-            reject({message: 'Wrong Email or Password'})
+            reject({ message: 'Wrong Email or Password' })
           }
 
         })
@@ -337,7 +338,7 @@ export default {
 
       // Check confirm password
       if (password !== confirmPassword) {
-        reject({message: 'Password doesn\'t match. Please try again.'})
+        reject({ message: 'Password doesn\'t match. Please try again.' })
       }
 
       jwt.registerUser(displayName, email, password)
@@ -347,7 +348,7 @@ export default {
 
           // Update data in localStorage
           localStorage.setItem('accessToken', response.data.accessToken)
-          commit('UPDATE_USER_INFO', response.data.userData, {root: true})
+          commit('UPDATE_USER_INFO', response.data.userData, { root: true })
 
           resolve(response)
         })
@@ -357,6 +358,17 @@ export default {
   fetchAccessToken () {
     return new Promise((resolve) => {
       jwt.refreshToken().then(response => { resolve(response) })
+    })
+  },
+
+  updateTest ({ commit }, payload) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        commit('TEST_FUNCION', payload)
+        resolve(resolve)
+      }, 1000)
+
+
     })
   }
 }

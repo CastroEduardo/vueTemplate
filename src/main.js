@@ -30,7 +30,7 @@ import axios from 'axios'
 Vue.prototype.$http = axios
 
 // API Calls
-import './http/requests'
+// import './http/requests'
 
 // mock
 import './fake-db/index.js'

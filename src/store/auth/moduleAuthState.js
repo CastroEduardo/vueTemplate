@@ -13,6 +13,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 export default {
+  Global1: 0,
   isUserLoggedIn: () => {
     let isAuthenticated = false
 
@@ -24,4 +25,5 @@ export default {
 
     return localStorage.getItem('userInfo') && isAuthenticated
   }
+
 }

@@ -1442,9 +1442,9 @@ router.beforeEach((to, from, next) => {
     //   }
     // }
 
-    // setTimeout(() => {
-    //   router.push({ path: '/pages/login', query: { to: to.path } })
-    // }, 500)
+    setTimeout(() => {
+      router.push({ path: '/pages/login', query: { to: to.path } })
+    }, 150)
 
     return next()
     // Specify the current path as the customState parameter, meaning it
