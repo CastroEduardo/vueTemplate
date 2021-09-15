@@ -19,7 +19,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import auth from '@/auth/authService'
+//import auth from '@/auth/authService'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -34,9 +34,9 @@ const router = new Router({
   routes: [
 
     {
-    // =============================================================================
-    // MAIN LAYOUT ROUTES
-    // =============================================================================
+      // =============================================================================
+      // MAIN LAYOUT ROUTES
+      // =============================================================================
       path: '',
       component: () => import('./layouts/main/Main.vue'),
       children: [
@@ -138,7 +138,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'eCommerce'},
+              { title: 'eCommerce' },
               { title: 'Shop', active: true }
             ],
             pageTitle: 'Shop',
@@ -152,7 +152,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+              { title: 'eCommerce', url: '/apps/eCommerce/shop' },
               { title: 'Wish List', active: true }
             ],
             pageTitle: 'Wish List',
@@ -166,7 +166,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'eCommerce', url:'/apps/eCommerce/shop'},
+              { title: 'eCommerce', url: '/apps/eCommerce/shop' },
               { title: 'Checkout', active: true }
             ],
             pageTitle: 'Checkout',
@@ -193,8 +193,8 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'eCommerce'},
-              { title: 'Shop', url: {name: 'ecommerce-shop'} },
+              { title: 'eCommerce' },
+              { title: 'Shop', url: { name: 'ecommerce-shop' } },
               { title: 'Item Details', active: true }
             ],
             parent: 'ecommerce-item-detail-view',
@@ -254,7 +254,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Data List'},
+              { title: 'Data List' },
               { title: 'List View', active: true }
             ],
             pageTitle: 'List View',
@@ -268,7 +268,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Data List'},
+              { title: 'Data List' },
               { title: 'Thumb View', active: true }
             ],
             pageTitle: 'Thumb View',
@@ -282,7 +282,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Grid'},
+              { title: 'Grid' },
               { title: 'Vuesax', active: true }
             ],
             pageTitle: 'Grid',
@@ -296,7 +296,7 @@ const router = new Router({
           meta: {
             breadcrumb: [
               { title: 'Home', url: '/' },
-              { title: 'Grid'},
+              { title: 'Grid' },
               { title: 'Tailwind', active: true }
             ],
             pageTitle: 'Tailwind Grid',
@@ -1420,7 +1420,7 @@ router.beforeEach((to, from, next) => {
   firebase.auth().onAuthStateChanged(() => {
 
     // get firebase current user
-    const firebaseCurrentUser = firebase.auth().currentUser
+    //const firebaseCurrentUser = firebase.auth().currentUser
 
     // if (
     //     to.path === "/pages/login" ||
@@ -1436,11 +1436,15 @@ router.beforeEach((to, from, next) => {
     // }
 
     // If auth required, check login. If login fails redirect to login page
-    if (to.meta.authRequired) {
-      if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
-        router.push({ path: '/pages/login', query: { to: to.path } })
-      }
-    }
+    // if (to.meta.authRequired) {
+    //   if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
+    //     router.push({ path: '/pages/login', query: { to: to.path } })
+    //   }
+    // }
+
+    // setTimeout(() => {
+    //   router.push({ path: '/pages/login', query: { to: to.path } })
+    // }, 500)
 
     return next()
     // Specify the current path as the customState parameter, meaning it
