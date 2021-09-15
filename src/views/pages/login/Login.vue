@@ -38,7 +38,7 @@
               <div class="px-8 pt-8 login-tabs-container">
                 <div class="vx-card__title mb-4">
                   <h4 class="mb-4">Login</h4>
-                  <p>Welcome back, please login to your account.</p>
+                  <p>Welcome back, please login to your account need.</p>
                 </div>
 
                 <vs-tabs>
