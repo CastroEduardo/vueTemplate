@@ -15,7 +15,7 @@
 
     <vs-input
       data-vv-validate-on="blur"
-      v-validate="'required|min:6|max:10'"
+      v-validate="'required|min:6|max:20'"
       type="password"
       name="password"
       icon-no-border
@@ -80,23 +80,23 @@ export default {
       // // Loading
       this.$vs.loading()
 
-      // const payload = {
-      //   checkbox_remember_me: this.checkbox_remember_me,
-      //   userDetails: {
-      //     email: this.email,
-      //     password: this.password
-      //   }
-      // }
+      const payload = {
+        checkbox_remember_me: this.checkbox_remember_me,
+        userDetails: {
+          email: this.email,
+          password: this.password
+        }
+      }
 
-      // console.log(payload)
+      console.log(payload)
 
       // setTimeout(() => {
       //   this.$vs.loading.close()
       // }, 1000)
-
       this.$store
-        .dispatch('auth/updateTest', 1)
-        .then(() => {
+        .dispatch('auth/loginDemo', 1)
+        .then(value => {
+          console.log(JSON.parse(JSON.stringify(value)))
           this.$vs.loading.close()
         })
         .catch(error => {
